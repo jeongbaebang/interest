@@ -362,7 +362,7 @@
         $(window).scroll(function () {
           // 현재 스크롤 위치와 문서 전체 높이 비교
           let scrollHeight = $(window).scrollTop() + $(window).height();
-          let documentHeight = $(document).height();
+          let documentHeight = $(document).height() - $(document).height() / 2; // preLoad 속도 조정
 
           // 스크롤이 맨 아래에 도달했을 때 추가 아이템 로드
           if (scrollHeight >= documentHeight) {
