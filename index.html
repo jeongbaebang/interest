@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INTEREST</title>
+    <!-- 초기화 -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Malgun Gotic', sans-serif;
+      }
+
+      a {
+        text-decoration: none;
+      }
+      img {
+        border: 0;
+      }
+      li {
+        list-style: none;
+      }
+      html {
+        background: #773333;
+      }
+    </style>
+    <!-- 헤더 -->
+    <style>
+      #main-header {
+        height: 40px;
+        background: #e66465;
+        position: relative;
+      }
+
+      .header-search-form {
+        float: left;
+      }
+      .header-menu {
+        float: right;
+      }
+      .header-title {
+        position: absolute;
+        width: 200px;
+        height: 40px;
+        left: 50%;
+        margin-left: -100px;
+        font-size: 3rem;
+        background-repeat: no-repeat;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: white;
+      }
+    </style>
+    <!-- 풀다운 메뉴 -->
+    <style>
+      .outer-menu {
+        float: left;
+        width: 100px;
+        height: 20px;
+        line-height: 20px;
+        padding: 10px 0;
+        position: relative;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        z-index: 9999;
+      }
+
+      .outer-menu:hover {
+        background: #e1dfdf;
+      }
+
+      .inner-menu {
+        display: none;
+        background: #ffffff;
+        margin-top: 10px;
+        width: 100%;
+        border-top: 1px solid #cccaca;
+        box-shadow: 0 2px 4px rgba(34, 25, 25, 0.5);
+      }
+
+      .inner-menu a {
+        display: block;
+        padding: 5px 10px;
+        z-index: 5000;
+      }
+
+      .inner-menu a:hover {
+        background: #e1dfdf;
+      }
+    </style>
+    <!-- 내비게이션 메뉴 -->
+    <style>
+      #main-navigation {
+        height: 30px;
+        background: #faf7f7;
+        border-top: 1px solid #cfcaca;
+        box-shadow: 1px 3px 3px rgba(34, 25, 25, 0.4);
+      }
+
+      #main-navigation > ul {
+        overflow: hidden;
+        text-align: center;
+      }
+
+      #main-navigation > ul > li {
+        display: inline;
+        padding: 0 5px;
+        line-height: 30px;
+        font-size: 13px;
+        color: #524d4d;
+        text-shadow: 0 1px 1px white;
+      }
+
+      #main-navigation > ul > li:hover {
+        background: #e1dfdf;
+        border-radius: 2px;
+      }
+    </style>
+    <!-- 검색 양식 -->
+    <style>
+      .header-search-form {
+        height: 26px;
+        padding: 7px;
+      }
+      .input-search {
+        display: block;
+        float: left;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: 15px 0 0 15px;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        width: 120px;
+        height: 24px;
+        padding: 0 0 0 10px;
+        font-size: 12px;
+        color: #555555;
+      }
+      .input-search:focus {
+        border-color: rgba(82, 168, 236, 0.8);
+        outline: 0;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+      }
+      .input-search-submit {
+        display: block;
+        float: left;
+        width: 50px;
+        height: 26px;
+        border-radius: 0 15px 15px 0;
+        border: 1px solid #cccccc;
+        margin-left: -1px;
+        vertical-align: top;
+        display: inline-block;
+      }
+    </style>
+    <!-- 종이 스타일 -->
+    <style>
+      .paper {
+        width: 190px;
+        margin-top: 10px;
+        padding: 15px 15px 0;
+        font-size: 11px;
+        background: linear-gradient(#e66465, #9198e5);
+        box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+        border-radius: 8px;
+      }
+
+      .paper-content {
+        margin: 0 -15px;
+        margin-top: 10px;
+        padding: 10px 15px;
+        background: linear-gradient(#9198e5);
+        overflow: hidden;
+      }
+
+      .paper-description {
+        margin: 10px 0;
+      }
+
+      .paper-link {
+        display: block;
+        float: left;
+      }
+
+      .paper-text {
+        float: left;
+        width: 150px;
+        margin-left: 10px;
+      }
+    </style>
+    <!-- 섹션 -->
+    <style>
+      /* 미디어 쿼리를 지원하지 않는 웹 브라우저 */
+      #main-section {
+        width: 920px;
+        margin: 0 auto;
+      }
+
+      /* 세 줄 */
+      @media (max-width: 919px) {
+        #main-section {
+          width: 690px;
+        }
+      }
+
+      /* 네 줄 */
+      @media (min-width: 930px) and (max-width: 1149px) {
+        #main-section {
+          width: 920px;
+        }
+      }
+
+      /* 다섯 줄 */
+      @media (min-width: 1150px) and (max-width: 1379px) {
+        #main-section {
+          width: 1150px;
+        }
+      }
+
+      /* 여섯 줄 */
+      @media (min-width: 1380px) {
+        #main-section {
+          width: 1380px;
+        }
+      }
+    </style>
+    <!-- 라이트박스 -->
+    <style>
+      #darken-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+
+        display: none;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 10000;
+        overflow-y: scroll;
+      }
+
+      #lightbox {
+        width: 700px;
+        margin: 20px auto;
+        padding: 15px;
+
+        border: 1px solid #333333;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 5px 5px rgba(34, 25, 25, 0.4);
+        text-align: center;
+      }
+
+      .user-information {
+        overflow: hidden;
+        text-align: left;
+      }
+      .user-information-image {
+        float: left;
+        width: 70px;
+        height: 70px;
+        border-radius: 8px;
+      }
+      .user-information-text {
+        float: right;
+        width: 620px;
+      }
+      .lightbox-splitter {
+        margin: 10px 0;
+      }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="jquery.masonry.min.js"></script>
+    <script src="jquery.imagesloaded.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // 풀다운 메뉴 기능
+        $('.outer-menu').hover(
+          function () {
+            // 마우스 오버 시 내부 메뉴 표시
+            $(this).find('.inner-menu').css('display', 'block');
+          },
+          function () {
+            // 마우스 아웃 시 내부 메뉴 숨김
+            $(this).find('.inner-menu').css('display', 'none');
+          }
+        );
+
+        // 페이지 초기화 및 아이템 추가 함수
+        const appendDocument = function () {
+          const items = [];
+          for (let i = 0; i < 100; i++) {
+            const randomColor1 = Math.floor(Math.random() * 255) + 1;
+            const randomColor2 = Math.floor(Math.random() * 255) + 1;
+            const randomColor3 = Math.floor(Math.random() * 255) + 1;
+            const height = Math.floor(Math.random() * 200) + 100; // 랜덤 높이 설정
+            const target = `
+              <div class="paper">
+                <div class="paper-holder">
+                  <a><img width="190" height="${height}" src="https://random.imagecdn.app/v1/image?width=190&height=${height}"></a>
+                </div>
+                <p class="테스트"></p>
+                <div class="paper-content">
+                  <div class="paper-link" style="background-color: rgb(${randomColor1}, ${randomColor2}, ${randomColor3}); width: 30px; height: 30px; border-radius:8px"></div>
+                  <p class="paper-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non diam neque. Maecenas mauris massa, aliquet ut mollis fermentum, pellentesque et leo.</p>
+                </div>
+              </div>
+            `;
+            items.push($(target).get(0));
+          }
+
+          // 아이템을 main-section에 추가
+          $('#main-section').append(items);
+
+          // 이미지 로드 확인 및 Masonry 레이아웃 적용
+          $('#main-section').imagesLoaded(function () {
+            $('#main-section').masonry('appended', items);
+          });
+        };
+
+        // 초기 문서 로드 및 Masonry 초기화
+        $('#main-section').imagesLoaded(function () {
+          $('#main-section').masonry({
+            itemSelector: '.paper',
+            columnWidth: 230,
+            isAnimated: true,
+          });
+
+          // 문서 로드 시 아이템 추가
+          appendDocument();
+
+          // 라이트박스 제거 이벤트
+          $('#darken-background').click(function () {
+            hideLightBox();
+          });
+
+          // .paper 요소 클릭 이벤트 연결
+          $(document).on('click', '.paper', function () {
+            // 클릭된 .paper 요소 내의 <img> src 속성 가져오기
+            const src = $(this).find('img').attr('src');
+            // 클릭된 .paper 요소 내의 .paper-link style 속성에서 background-color 값 추출
+            const styleValue = $(this).find('.paper-link').attr('style');
+            const backgroundColorMatch = styleValue.match(
+              /background-color:\s*([^;]+)/
+            )[1];
+            // 라이트박스 표시 함수 호출
+            showLightBox(src, backgroundColorMatch);
+          });
+
+          // 라이트박스 내부 클릭 시 이벤트 전파 중지
+          $('#lightbox').click(function (event) {
+            event.stopPropagation();
+          });
+        });
+
+        // 스크롤 이벤트 핸들러 추가
+        $(window).scroll(function () {
+          // 현재 스크롤 위치와 문서 전체 높이 비교
+          let scrollHeight = $(window).scrollTop() + $(window).height();
+          let documentHeight = $(document).height();
+
+          // 스크롤이 맨 아래에 도달했을 때 추가 아이템 로드
+          if (scrollHeight >= documentHeight) {
+            appendDocument();
+          }
+        });
+      });
+
+      // 라이트박스를 표시하는 함수
+      function showLightBox(src, backgroundColor) {
+        // 라이트박스와 배경 표시
+        $('#darken-background').show();
+        $('#darken-background').css('top', $(window).scrollTop());
+        $('#content').attr('src', src).css({
+          width: '700px',
+          borderRadius: '10px',
+          backgroundColor,
+        });
+        $('.user-information-image').css({
+          backgroundColor,
+        });
+        // 배경 스크롤 비활성화
+        $('body').css('overflow', 'hidden');
+      }
+
+      // 라이트박스를 숨기는 함수
+      function hideLightBox() {
+        // 라이트박스와 배경 숨기기
+        $('#darken-background').hide();
+        // 배경 스크롤 활성화
+        $('body').css('overflow', '');
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header id="main-header">
+      <div class="header-search-form">
+        <form style="display: none">
+          <input type="search" class="input-search" />
+          <input type="submit" class="input-search-submit" value="검색" />
+        </form>
+      </div>
+      <h1 class="header-title">INTEREST</h1>
+      <div class="header-menu">
+        <ul class="outer-menu">
+          <li>
+            <a href="#">INFO</a>
+            <ul class="inner-menu">
+              <li><a href="#">데이터</a></li>
+              <li><a href="#">데이터</a></li>
+              <li><a href="#">데이터</a></li>
+              <li><a href="#">데이터</a></li>
+              <li><a href="#">데이터</a></li>
+              <li><a href="#">데이터</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="outer-menu">
+          <li>
+            <a href="#">USER</a>
+            <ul class="inner-menu">
+              <li><a href="#">데이터</a></li>
+              <li><a href="#">데이터</a></li>
+              <li><a href="#">데이터</a></li>
+              <li><a href="#">데이터</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <!-- 내비게이션 메뉴 -->
+    <nav id="main-navigation">
+      <ul>
+        <li><a href="#">Following</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="#">Everything</a></li>
+        <li><a href="#">Popular</a></li>
+        <li><a href="#">Gift</a></li>
+      </ul>
+    </nav>
+    <!-- 본문 영역 -->
+    <section id="main-section"></section>
+    <!-- 라이트박스 -->
+    <div id="darken-background">
+      <div id="lightbox">
+        <div class="user-information">
+          <div class="user-information-image"></div>
+          <div class="user-information-text">
+            <h3>Image</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
+        <hr class="lightbox-splitter" />
+        <img src="http://via.placeholder.com/600x750" id="content" />
+      </div>
+    </div>
+  </body>
+</html>
